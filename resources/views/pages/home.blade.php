@@ -49,20 +49,12 @@
         <h2 class="text-4xl font-bold mb-12">Our Services</h2>
 
         <div class="grid md:grid-cols-3 gap-8">
+            @foreach($services as $service)
             <div class="bg-slate-800 p-8 rounded-xl hover:scale-105 transition">
-                <h3 class="text-xl font-semibold mb-3">Web Development</h3>
-                <p class="text-slate-400">Laravel, modern frontend & scalable backend.</p>
+                <h3 class="text-xl font-semibold mb-3">{{ $service->title }}</h3>
+                <p class="text-slate-400">{{ $service->description }}</p>
             </div>
-
-            <div class="bg-slate-800 p-8 rounded-xl hover:scale-105 transition">
-                <h3 class="text-xl font-semibold mb-3">UI / UX Design</h3>
-                <p class="text-slate-400">Desain modern, clean & user friendly.</p>
-            </div>
-
-            <div class="bg-slate-800 p-8 rounded-xl hover:scale-105 transition">
-                <h3 class="text-xl font-semibold mb-3">Consulting</h3>
-                <p class="text-slate-400">Solusi teknologi sesuai kebutuhan bisnis.</p>
-            </div>
+            @endforeach
         </div>
     </div>
 </section>
