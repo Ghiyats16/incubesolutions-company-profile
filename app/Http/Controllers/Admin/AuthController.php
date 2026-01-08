@@ -23,6 +23,8 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
+            \App\Models\ActivityLog::record('Login', 'Admin logged in');
+
             return redirect()->intended(route('admin.dashboard'));
         }
 
@@ -33,6 +35,7 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
+        \App\Models\ActivityLog::record('Logout', 'Admin logged out');
         Auth::logout();
 
         $request->session()->invalidate();

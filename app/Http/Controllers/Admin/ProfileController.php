@@ -35,6 +35,8 @@ class ProfileController extends Controller
 
         $user->save();
 
+        \App\Models\ActivityLog::record('Updated Profile', "Updated profile for user: {$user->name}");
+
         return back()->with('success', 'Profile updated successfully.');
     }
 }

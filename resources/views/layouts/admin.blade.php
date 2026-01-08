@@ -28,6 +28,10 @@
                     Profile Settings
                 </a>
                 
+                <a href="{{ route('admin.activity-logs.index') }}" class="block py-2.5 px-4 rounded transition duration-200 {{ request()->routeIs('admin.activity-logs.*') ? 'bg-blue-600' : 'hover:bg-gray-700' }}">
+                    Activity Logs
+                </a>
+                
                 <form action="{{ route('logout') }}" method="POST" class="mt-4 border-t border-gray-700 pt-4">
                     @csrf
                     <button type="submit" class="w-full text-left block py-2.5 px-4 rounded transition duration-200 hover:bg-red-600 text-red-400 hover:text-white">

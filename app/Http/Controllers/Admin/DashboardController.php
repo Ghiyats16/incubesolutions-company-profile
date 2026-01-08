@@ -13,7 +13,9 @@ class DashboardController extends Controller
     {
         $totalServices = Service::count();
         $totalContacts = Contact::count();
+        $messagesToday = Contact::whereDate('created_at', today())->count();
+        $lastLogin = \App\Models\ActivityLog::where('action', 'Login')->latest()->first();
 
-        return view('admin.dashboard.index', compact('totalServices', 'totalContacts'));
+        return view('admin.dashboard.index', compact('totalServices', 'totalContacts', 'messagesToday', 'lastLogin'));
     }
 }

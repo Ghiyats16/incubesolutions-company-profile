@@ -29,4 +29,5 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     
     Route::resource('services', ServiceController::class);
     Route::resource('contacts', App\Http\Controllers\Admin\ContactController::class);
+    Route::get('/activity-logs', [App\Http\Controllers\Admin\ActivityLogController::class, 'index'])->name('activity-logs.index');
 });

@@ -31,6 +31,8 @@ class ServiceController extends Controller
             'description' => $request->description,
         ]);
 
+        \App\Models\ActivityLog::record('Created Service', "Added service: {$request->title}");
+
         return redirect()->route('admin.services.index')->with('success', 'Service created successfully');
     }
 
@@ -51,12 +53,16 @@ class ServiceController extends Controller
             'description' => $request->description,
         ]);
 
+        \App\Models\ActivityLog::record('Updated Service', "Updated service: {$service->title}");
+
         return redirect()->route('admin.services.index')->with('success', 'Service updated successfully');
     }
 
     public function destroy(Service $service)
     {
+        $title = $service->title;
         $service->delete();
+        \App\Models\ActivityLog::record('Deleted Service', "Deleted service: {$title}");
         return redirect()->route('admin.services.index');
     }
 }
