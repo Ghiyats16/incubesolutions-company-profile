@@ -1,25 +1,32 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\Admin\ServiceController;
+use App\Http\Controllers\Admin\DashboardController;
 
-/*
-|--------------------------------------------------------------------------
-| Landing Page (Single Page)
-|--------------------------------------------------------------------------
-*/
-Route::get('/', function () {
-    return view('pages.home');
-})->name('home');
+/* ===== USER PAGES ===== */
+Route::get('/', [PageController::class, 'home'])->name('home');
+Route::get('/about', [PageController::class, 'about'])->name('about');
+Route::get('/services', [PageController::class, 'services'])->name('services');
+Route::get('/contact', [PageController::class, 'contact'])->name('contact');
 
-/*
-|--------------------------------------------------------------------------
-| Contact Page
-|--------------------------------------------------------------------------
-*/
-Route::get('/contact', function () {
-    return view('pages.contact');
-})->name('contact');
-
+/* ===== CONTACT FORM ===== */
 Route::post('/contact', [ContactController::class, 'store'])
     ->name('contact.store');
+
+/* ===== AUTHENTICATION ===== */
+Route::get('/login', [App\Http\Controllers\Admin\AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [App\Http\Controllers\Admin\AuthController::class, 'login']);
+Route::post('/logout', [App\Http\Controllers\Admin\AuthController::class, 'logout'])->name('logout');
+
+/* ===== ADMIN ===== */
+Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/profile', [App\Http\Controllers\Admin\ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile', [App\Http\Controllers\Admin\ProfileController::class, 'update'])->name('profile.update');
+    
+    Route::resource('services', ServiceController::class);
+    Route::resource('contacts', App\Http\Controllers\Admin\ContactController::class);
+});

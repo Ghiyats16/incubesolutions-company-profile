@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Service;
+
 class PageController extends Controller
 {
     public function home()
@@ -16,7 +18,9 @@ class PageController extends Controller
 
     public function services()
     {
-        return view('pages.services');
+        return view('pages.services', [
+            'services' => Service::all()
+        ]);
     }
 
     public function contact()
