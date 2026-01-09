@@ -1,5 +1,10 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
+//FILE SCREENSHOT
+<img width="960" height="540" alt="Fitur edit" src="https://github.com/user-attachments/assets/a33f147f-82e4-4a42-bdd6-8df3838f3272" />
+<img width="960" height="540" alt="Admin panel" src="https://github.com/user-attachments/assets/9c82b5d4-4f18-4bd8-981e-f24ad29dbfd9" />
+<img width="960" height="540" alt="Tampilan awal" src="https://github.com/user-attachments/assets/5159e1a7-0cdf-42ea-baf5-cef47c6b72ee" />
+
 <p align="center">
 <a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
