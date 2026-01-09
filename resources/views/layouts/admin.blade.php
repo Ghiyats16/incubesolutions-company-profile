@@ -24,6 +24,11 @@
                     Contacts
                 </a>
                 
+                <h3 class="px-4 mt-6 mb-2 text-xs uppercase text-gray-500 font-semibold tracking-wider">REST API Data</h3>
+                <a href="{{ route('admin.services.api') }}" class="block py-2.5 px-4 rounded transition duration-200 {{ request()->routeIs('admin.services.api') ? 'bg-blue-600' : 'hover:bg-gray-700' }}">
+                    Services (API)
+                </a>
+                
                 <a href="{{ route('admin.profile.edit') }}" class="block py-2.5 px-4 rounded transition duration-200 {{ request()->routeIs('admin.profile.*') ? 'bg-blue-600' : 'hover:bg-gray-700' }}">
                     Profile Settings
                 </a>

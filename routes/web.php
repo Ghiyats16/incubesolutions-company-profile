@@ -5,6 +5,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Admin\ServiceController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ApiServiceController;
 
 /* ===== USER PAGES ===== */
 Route::get('/', [PageController::class, 'home'])->name('home');
@@ -31,3 +32,9 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::resource('contacts', App\Http\Controllers\Admin\ContactController::class);
     Route::get('/activity-logs', [App\Http\Controllers\Admin\ActivityLogController::class, 'index'])->name('activity-logs.index');
 });
+
+Route::middleware(['auth'])->prefix('admin')->group(function () {
+    Route::get('/services-from-api', [ApiServiceController::class, 'index'])
+        ->name('admin.services.api');
+});
+
